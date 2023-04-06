@@ -34,10 +34,10 @@ export default function SortingFlights(props) {
         }}
       >
         <table id="table">
-<tr>
-<th>flight Number</th>
-<th>Company Name</th>
-<th>Passenger</th>
+<tr id="tr">
+<th className='th'>flight Number</th>
+<th className='th'>Company Name</th>
+<th className='th'>Passenger</th>
 
 </tr>
 
@@ -46,9 +46,9 @@ export default function SortingFlights(props) {
         {props.tempFlight.map((val) => {
           return (
             <tr id="tr">
-            <td className="td2" style={{color:'red'}}>{val.id}</td>
-            <td className="td2" style={{color:'red'}}>{val.company}</td>
-            <td className="td2" style={{color:'red'}}>{val.passengerNumaber}</td>
+            <td className='td' style={{color:'red'}}>{val.id}</td>
+            <td className='td' style={{color:'red'}}>{val.company}</td>
+            <td className='td' style={{color:'red'}}>{val.passengerNumaber}</td>
             </tr>
             
             
