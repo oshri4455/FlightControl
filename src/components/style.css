@@ -161,7 +161,7 @@ select{
 }
 #tr , .th{
  position: relative;
- top: -200px;
+ top: -400px;
 left: 50px;
 
 
@@ -172,7 +172,7 @@ left: 50px;
 .td{
   position: relative;
 
-  top: -200px;
+  top: -400px;
   left: 50px;
 }
 .td2{
