@@ -1,24 +1,8 @@
 .App {
   text-align: center;
 }
-  th{
-  border: 2px solid black;
-  border-collapse: collapse;
-  font-size: 30px;
-  width: 300px;
-  height: 80px;
 
-}
-td{
-  position: relative;
-  top: -350px;
-}
-table{
-  position: relative;
-  left: 300px;
-  top: -350px;
- 
-}
+
 #divSelsect{
   position: relative;
   top: -350px;
@@ -29,12 +13,7 @@ table{
   top: -300px;
 }
 
-#tr{
-  position: relative;
-  top: -360px;
-  left: 300px;
-  
-}
+
 input{
   position: relative;
   top: -300px;
