@@ -7,11 +7,12 @@ export default function AllFlight(props) {
 
 
 
+
   return (
    
     <div >
        {props.lockFlight()}
-      <h2  id='h2'>All flight</h2>
+      <h2 id='h2'>All flight</h2>
      
       <table className="custom-table">
   <thead>

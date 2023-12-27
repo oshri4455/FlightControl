@@ -33,27 +33,25 @@ export default function SortingFlights(props) {
           color: "black",
         }}
       >
-        <table id="table">
-<tr id="tr">
-<th className='th'>flight Number</th>
-<th className='th'>Company Name</th>
-<th className='th'>Passenger</th>
-
-</tr>
-
-
-        </table>
-        {props.tempFlight.map((val) => {
-          return (
-            <tr id="tr">
-            <td className='td' style={{color:'red'}}>{val.id}</td>
-            <td className='td' style={{color:'red'}}>{val.company}</td>
-            <td className='td' style={{color:'red'}}>{val.passengerNumaber}</td>
-            </tr>
-            
-            
-          );
-        })}
+ <table className="custom-table">
+  <thead>
+    <tr>
+      <th>מספר טיסה</th>
+      <th>שם החברה</th>
+      <th>מספר נוסעים</th>
+    </tr>
+  </thead>
+  <tbody>
+    {/* הוספת נתוני הטבלה כאן על ידי לולאת מיפוי */}
+    {props.tempFlight.map((val, index) => (
+      <tr key={index}>
+        <td>{val.id}</td>
+        <td>{val.company}</td>
+        <td>{val.passengerNumaber}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
       </div>
     </div>
   );

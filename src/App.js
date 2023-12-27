@@ -23,74 +23,79 @@ function App() {
   const [newFlight,setNewFlights] = useState([])
   const [vall, setVal] = useState("");
 
-  useEffect(()=>{
-    fetch('/getData').then((res)=>{
-      return res.json()
-    }).then((data)=>{
-      setTempFlight(data)
-    })
-    },[flag])
-  
 
-  const del = (index)=>{
-    let temp = planOpt.filter((val,i)=>(i != index)) 
-    setPlenOpt([...temp])
-fetch('/delFlight',{
-  headers:{  'Accept': 'application/json',
-  'Content-Type': 'application/json'},
-  method:'post',
-  body:JSON.stringify({
-  flightDel:temp
-  })
-}).then((res)=>{
- return res.json()
-}).then((data)=>{
-  setFlag(!flag)
-})
 
-  }
-  
 
+  useEffect(() => {
+    localStorage.setItem('myDataKey', JSON.stringify(newFlight));
+  }, [newFlight]);
+
+  // טעינת הנתונים מ-Local Storage בטעינה הראשונה
+  useEffect(() => {
+    const savedData = localStorage.getItem('myDataKey');
+    if (savedData) {
+      setNewFlights(JSON.parse(savedData));
+    }
+  }, []);
+
+
+useEffect(() => {
+  console.log("Current flights:", planOpt);
+}, [planOpt]);
+
+const del = (flightId) => {
+  const numericFlightId = Number(flightId);
+  const updatedFlights = planOpt.filter(flight => flight.id !== numericFlightId.toString());
+  setPlenOpt(updatedFlights);
+};
 const addPlan = (n,c,p)=>{
 let temp = {
   id:n,
   company:c,
   passengerNumaber:p
 }
+
+
+const specialCharactersAndLetters = /^[a-zA-Z!@#$%^&*()_+[\]{}|;:'"<>,.?/~`]+$/;
+
 if(temp.id == ''){
   document.getElementById('inpt1').style.borderColor = 'red'
-  return false
+  return 
 }
 if(temp.company == ''){
   document.getElementById('inpt2').style.borderColor = 'red'
-  return false 
+  return 
 }
 if(temp.passengerNumaber == ''){
   document.getElementById('inpt3').style.borderColor = 'red'
-  return false
+  return 
 }
 if(isNaN(temp.id)){
   alert('the id not a number')
-  return false
+  return 
 }
 if(temp.id.length >= 5){
-  alert('the ength of id eror')
-  return false
+  alert('the length of id eror')
+  return 
 }
 if(temp.passengerNumaber >= 1000){
   alert('the passengers on the plan up to 1000 people ')
-  return false
+  return
 }
 
   if(temp.company !=  temp.company.toLowerCase()){
   alert('the company need to be small leters')
-  return false
-    
+  return
   }
   if(!isNaN(temp.company)){
     alert('number Illegal on comapny')
-    return false
+    return 
   }
+
+if(specialCharactersAndLetters.test(temp.passengerNumaber)){
+  alert('Invalid character for passenger Number');
+  return
+}
 
   setPlenOpt([...planOpt,temp])
   
@@ -176,15 +181,15 @@ const lockFlight = ()=>{
   <Route path='/'  element = {<Signin   setFlag = {setFlag}/>}  />
 <Route path='/controlPanel' element = {<ControlPanel   />}              />
   {planOpt.map((val,index)=>{
- return  <Route path='/controlPanel/allFlight'  element = {<AllFlight val = {vall} newFlight = {newFlight} lockFlight = {lockFlight} addPlan ={addPlan} planOpt = {planOpt} id = {val.id} company = {val.company} numberFlight = {val.passengerNumaber} index = {index}  />}  />
+ return  <Route path='/allFlight'  element = {<AllFlight val = {vall} newFlight = {newFlight} lockFlight = {lockFlight} addPlan ={addPlan} planOpt = {planOpt} id = {val.id} company = {val.company} numberFlight = {val.passengerNumaber} index = {index}  />}  />
   })}
 
-  <Route path='/controlPanel/add' element = {<AddFlight planOpt = {planOpt}  addPlan = {addPlan}  />} />
+  <Route path='/add' element = {<AddFlight planOpt = {planOpt}  addPlan = {addPlan}  />} />
   
-   <Route path= '/controlPanel/sort' element =  {<SortFlight  select = {select}   addPlan = {addPlan}  planOpt = {planOpt}    tempFlight = {tempFlight} sort={sort}  />} />
+   <Route path= '/sort' element =  {<SortFlight  select = {select}   addPlan = {addPlan}  planOpt = {planOpt}    tempFlight = {tempFlight} sort={sort}  />} />
 
   {planOpt.map((val,index)=>{
-  return <Route  path='/controlPanel/delFlight'  element = {<DelFlight planOpt = {planOpt} del = {del}  id = {val.id} company = {val.company} passengerNumaber = {val.passengerNumaber} index = {index}    />}  />
+  return <Route  path='/delFlight'  element = {<DelFlight newFlight = {newFlight} planOpt = {planOpt} del = {del}  id = {val.id} company = {val.company} passengerNumaber = {val.passengerNumaber} index = {index}    />}  />
   
 
   })}
