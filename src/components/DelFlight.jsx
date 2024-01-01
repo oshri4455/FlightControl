@@ -8,15 +8,16 @@ export default function DelFlight(props) {
         const flightExists = props.planOpt.some(flight => flight.id === numericFlightId.toString());
       
         if (flightExists) {
+          alert('The flight was successfully deleted')
           props.del(numericFlightId);
         } else {
           alert('Flight number not found');
         }
       };
       return (
-        <div>
+        <div id='divdel'>
           <h2>Del Flight</h2>
-          
+          <div id='divDel'>
           <input 
             id='inptDel' 
             onChange={(e) => setNumberFlight(e.target.value)} 
@@ -31,6 +32,7 @@ export default function DelFlight(props) {
           >
             Del
           </button>
+        </div>
         </div>
       );
     }

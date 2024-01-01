@@ -9,8 +9,8 @@ const [passengerNumaber,setpassengerNumaber] = useState('')
 
 
   return (
-    <div >
-      <h2>Add Flight</h2>
+    <div id='divadd' >
+      <h2 id='addTilte'>Add Flight</h2>
 <input id='inpt1' onChange={(e)=>{setNumberFlight(e.target.value)}} type="text" placeholder='number flight' />
 <br />
 <input id='inpt2'  onChange={(e)=>{setcompanyName(e.target.value)}} type="text"placeholder='company flight' />

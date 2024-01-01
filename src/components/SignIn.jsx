@@ -17,18 +17,17 @@ if(idFlight != '12345'){
 }
 else{
   props.setFlag(true)
-  nav('/allFlight')
+  nav('/ControlPanel')
 
 }
 }
   return (
 
-    <div>
-    
+    <div id='divLogin'>
+    <h2 id='loginTitle'>Login Admin</h2>
 <input id='inptLogin' onChange={(e)=>{setIdFlight(e.target.value)}} type="text" placeholder='מספר מזהה' />
 <br />
 <button id='btnLogin'  className="btn btn-dark" onClick={signIn}  >כניסה</button>
-
 
     </div>
   )

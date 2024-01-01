@@ -9,9 +9,12 @@ export default function AllFlight(props) {
 
   return (
    
-    <div >
+    <div id='allFlightDiv'  >
+       <h2  id='h2'>All flight</h2>
        {props.lockFlight()}
-      <h2  id='h2'>All flight</h2>
+       <div id='divTable'>
+     
+     
      
       <table className="custom-table">
   <thead>
@@ -32,6 +35,7 @@ export default function AllFlight(props) {
     ))}
   </tbody>
 </table>
+</div>
     </div>
   )
 }

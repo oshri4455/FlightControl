@@ -1,4 +1,13 @@
 
+
+#input{
+ position: relative;
+ top: -70px;
+}
+#select{
+  position: relative;
+  top: 270px;
+}
 #btn{
     width: 200px;
     height: 80px;
@@ -6,26 +15,52 @@
     position: relative;
     left: 650px;
 }
+#divdel{
+  position: relative;
+  top: -100px;
+}
+#divadd{
+  position: relative;
+  top: -350px;
+}
+#divinfo1{
+  position: relative;
+  left: 300px;
+  margin: 2px;
+}
+#divinfo2{
+  position: relative;
+  top: -190px;
+}
+#divDel{
+  position: relative;
+  top: 250px;
+}
 #inpt1{
     width: 300px;
     height: 60px;
     margin: 5px;
     position: relative;
-    top: -300px;
+    top: 200px;
 }
 #inpt2{
   width: 300px;
   height: 60px;
   margin: 5px;
   position: relative;
-  top: -300px;
+  top: 200px;
+}
+
+#sortTitle{
+  position: relative;
+  top: -70px;
 }
 #inpt3{
   width: 300px;
   height: 60px;
   margin: 5px;
   position: relative;
-  top: -300px;
+  top: 200px;
 }
 
 #btn1{
@@ -33,22 +68,30 @@
     height: 60px;
     margin: 5px;
     position: relative;
-    top: -300px;  
+    top: 220px;  
      
 }
-/* סגנונות לטבלה */
-.custom-table {
-  width: 60%;
-  margin: 0 auto;
+#addTilte{
   position: relative;
-  top: -270px;
+  top: 200px;
+}
+#divTable {
+  overflow-y: auto;
+  max-height: 400px;
+  width: 60%; /* או כל רוחב שאתה רוצה לאלמנט */
+  margin: 0 auto; /* ממרכז את האלמנט אופקית */
+  position: relative;
+  top: -50px;
+}
+.custom-table {
+  width: 100%;
+  margin: 0 auto;
   border-collapse: collapse;
-  font-family: Arial, sans-serif;
-  margin-bottom: 20px; /* מרווח בין הטבלאות */
 }
 
-/* סגנונות לכותרות העמודות */
-.custom-table th {
+.custom-table thead th {
+  position: sticky;
+  top: 0;
   background-color: #007bff;
   color: white;
   font-weight: bold;
@@ -56,8 +99,7 @@
   text-align: center;
 }
 
-/* סגנונות לתאים */
-.custom-table td {
+.custom-table tbody td {
   border: 1px solid #ccc;
   padding: 10px 15px;
   text-align: center;
@@ -73,10 +115,21 @@
   background-color: #ddd;
 }
   body{
-    background-image: url("b.jpg");
+   
   background-size: cover;
-  }
 
+  
+  }
+  #img{
+    width: 1000px;
+    height: 250px;
+    position: relative;
+    top: -170px;
+    right: 20px;
+  }
+html {
+  scroll-behavior: smooth;
+}
   #inptLogin{
     width: 300px;
     height: 60px;
@@ -98,11 +151,45 @@
     top: -280px;
     
 }
+#allFlightDiv{
+  position: relative;
+  top:-100px;
+}
+#sorFlightDiv{
+  position: relative;
+  top:-100px;
+}
 #inptDel{
     position: relative;
     top: -300px;
     width: 300px;
     height: 60px;  
+}
+#divInfo {
+  width: 1720px;
+  height: 300px;
+  background-color: rgba(96, 114, 136, 0.845);
+  position: relative; /* משמש לשמירת האלמנט במקום קבוע */
+  left: 50%;
+  bottom: 0;
+  top: 1000px;
+  transform: translateX(-50%);
+}
+#loginTitle{
+  position: inherit;
+  top: 50px;
+}
+#divLogin{
+  position: relative;
+  top: -150px;
+}
+#div {
+ width: 1200px;
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+ 
 }
 
 @keyframes changeColor {
@@ -119,15 +206,15 @@
 }
 h1 {
   animation: changeColor 5s infinite;
+  position: relative;
+  top: -300px;
+  transform: translateX(-50%);
+left: 50%;
 }
 h2{
-    position: relative;
-    top: -360px;
-    animation: changeColorH2 5s infinite;
-}
-#h2{
   position: relative;
-  top: -390px;
+  top: -70px;
+    animation: changeColorH2 5s infinite;
 }
 
 @media (max-width:768px){
@@ -160,10 +247,7 @@ width: 100%;
     
    
 }
-#div{
-  width: 768px;
-  height: 500px;
-}
+
 h2{
   position: relative;
   top: -500px;

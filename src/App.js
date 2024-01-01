@@ -8,9 +8,12 @@ import DelFlight from './components/DelFlight'
 import 'bootstrap/dist/css/bootstrap.min.css' 
 import ControlPanel from './components/ControlPanel'
 import SortFlight from './components/SortFlight'
-import {HashRouter,Routes,Route} from 'react-router-dom'
+import {HashRouter,Routes,Route, useNavigate} from 'react-router-dom'
 import { useEffect } from 'react';
-
+import Menu from './components/Menu';
+import { toContainElement } from '@testing-library/jest-dom/dist/matchers';
+import Info from './components/Info';
+import img from './components/t.jpg'
 
 
 function App() {
@@ -19,12 +22,18 @@ function App() {
   const [planOpt,setPlenOpt] = useState([])
   const [sort, setSort] = useState("");
   const [tempFlight,setTempFlight] = useState([])
-  const [flag,setFlag]=useState(false)
+const[flag,setFlag] = useState(false)
   const [newFlight,setNewFlights] = useState([])
   const [vall, setVal] = useState("");
+  const [showAddFlight, setShowAddFlight] = useState(false);
+  const [showAllFlight, setShowAllFlight] = useState(false);
+const [showSortFlight,setShowSortFlight] = useState(false)
+const [showLogin ,setShowLogin] = useState(false)
+const [showDelFlight,setShowDelFlight] = useState(false)
 
 
-
+  
+  
 
   useEffect(() => {
     localStorage.setItem('myDataKey', JSON.stringify(newFlight));
@@ -96,32 +105,11 @@ if(specialCharactersAndLetters.test(temp.passengerNumaber)){
   alert('Invalid character for passenger Number');
   return
 }
-
+alert('הטיסה נוספה בהצלחה')
   setPlenOpt([...planOpt,temp])
   
-
-
-
-fetch('/addFlight',{
-  headers:{  'Accept': 'application/json',
-'Content-Type': 'application/json'},
-method:'post',
-body:JSON.stringify({
-  flightAdd:temp
-})
-}).then((res)=>{
- return res.json()
-}).then((data)=>{
-  setFlag(!flag)
-})
 }
 
-
-const menu = ()=>{
-  if(flag === true){
-    return <ControlPanel    />
-  }
-}
 
 useEffect(()=>{
 
@@ -164,36 +152,79 @@ const lockFlight = ()=>{
   <input id='input' type='serch' placeholder='Enter company Name' onChange={(e)=>setVal(e.target.value)}/>
   )
 }
+const toggleAddFlight = () => {
+  setShowAddFlight(true); // מציג רק את AddFlight
+  setShowAllFlight(false); // מסתיר את AllFlight
+  setShowSortFlight(false)
+  setShowDelFlight(false)
+};
+
+const toggleAllFlight = () => {
+  setShowAllFlight(true); // מציג רק את AllFlight
+  setShowAddFlight(false); // מסתיר את AddFlight
+  setShowSortFlight(false)
+  setShowLogin(false)
+  setShowDelFlight(false)
+};
 
 
+const toggleSortlight = ()=>{
+  setShowSortFlight(true)
+  setShowAddFlight(false); 
+  setShowAllFlight(false);
+  setShowLogin(false)
+  setShowDelFlight(false)
+}
 
+const toggleLogin = ()=>{
+  setShowAllFlight(false); 
+  setShowSortFlight(false);
+  setShowLogin(true)
+  setShowAddFlight(false)
+}
 
-
+const toggleDelFlight = ()=>{
+  setShowDelFlight(true)
+  setShowSortFlight(false)
+  setShowAddFlight(false); 
+  setShowAllFlight(false);
+  setShowLogin(false)
+}
+const toggleExit = ()=>{
+  setShowDelFlight(false)
+  setShowSortFlight(false)
+  setShowAddFlight(false); 
+  setShowAllFlight(false);
+  setShowLogin(false)
+}
 
   return (
     <div className="App">
-      
+   <Info           />
+ 
 <HashRouter> 
 <h1>Flight Control</h1>
-{menu()}    
+<img id='img' src={img}alt="" />
+{showAddFlight && <AddFlight planOpt={planOpt} addPlan={addPlan} />}
+{showAllFlight  &&  
+ <AllFlight  val = {vall} toggleAllFlight = {toggleAllFlight}  showAllFlight = {showAllFlight} setShowAllFlight = {setShowAllFlight} newFlight = {newFlight} lockFlight = {lockFlight} addPlan ={addPlan} planOpt = {planOpt}  />}
+
+{ showSortFlight && <SortFlight  select = {select}   addPlan = {addPlan}  planOpt = {planOpt}    tempFlight = {tempFlight} sort={sort}  />}
+{showLogin && <Signin toggleLogin = {toggleLogin}  setFlag = {setFlag}/>}
+{showDelFlight && <DelFlight  del = {del}  planOpt = {planOpt}     />}
+
 <Routes>
 
-  <Route path='/'  element = {<Signin   setFlag = {setFlag}/>}  />
-<Route path='/controlPanel' element = {<ControlPanel   />}              />
-  {planOpt.map((val,index)=>{
- return  <Route path='/allFlight'  element = {<AllFlight val = {vall} newFlight = {newFlight} lockFlight = {lockFlight} addPlan ={addPlan} planOpt = {planOpt} id = {val.id} company = {val.company} numberFlight = {val.passengerNumaber} index = {index}  />}  />
-  })}
+<Route  path='/' element = {<Menu toggleLogin = {toggleLogin}  toggleAllFlight = {toggleAllFlight} toggleSortlight = {toggleSortlight}    />}          />
 
-  <Route path='/add' element = {<AddFlight planOpt = {planOpt}  addPlan = {addPlan}  />} />
+
+
   
-   <Route path= '/sort' element =  {<SortFlight  select = {select}   addPlan = {addPlan}  planOpt = {planOpt}    tempFlight = {tempFlight} sort={sort}  />} />
+  <Route path='/ControlPanel' element={<ControlPanel toggleExit = {toggleExit}  toggleDelFlight = {toggleDelFlight} SortFlight = {SortFlight} setShowSortFlight = {setShowSortFlight} toggleSortlight = {toggleSortlight} setShowAllFlight = {setShowAllFlight} showAllFlight = {showAllFlight} toggleAllFlight = {toggleAllFlight} toggleAddFlight={toggleAddFlight} setShowAddFlight={setShowAddFlight} showAddFlight={showAddFlight} />} />
 
-  {planOpt.map((val,index)=>{
-  return <Route  path='/delFlight'  element = {<DelFlight newFlight = {newFlight} planOpt = {planOpt} del = {del}  id = {val.id} company = {val.company} passengerNumaber = {val.passengerNumaber} index = {index}    />}  />
+ 
   
-
-  })}
-
+   
 </Routes>
 </HashRouter>
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './style.css'
 
 
 
@@ -9,13 +10,12 @@ export default function SortingFlights(props) {
 
 
   return (
-    <div>
+    <div id="sorFlightDiv">
 
-   <h2>Sort Flight</h2>
-      <span
+   <h2 id="sortTitle"> Sort Flight</h2>
+      <span 
         style={{
           fontWeight: "bold",
-          marginTop: "5px",
           width: "300px",
           hight: "300px",
           overflow: "hiddin",
@@ -26,13 +26,14 @@ export default function SortingFlights(props) {
  
       </span>
       <br />
-      <div>{props.select()}</div>
+      <div id="select" >{props.select()}</div>
       <div
         style={{
           fontWeight: "bold",
           color: "black",
         }}
       >
+        <div id="divTable">
  <table className="custom-table">
   <thead>
     <tr>
@@ -52,6 +53,7 @@ export default function SortingFlights(props) {
     ))}
   </tbody>
 </table>
+</div>
       </div>
     </div>
   );
