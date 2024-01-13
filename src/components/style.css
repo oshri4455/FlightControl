@@ -1,5 +1,10 @@
 
-
+body {
+  background-image: url('bk.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* אפשרי אם ברצונך שהתמונה תהיה נצמדת למסך */
+}
 #input{
  position: relative;
  top: -70px;
@@ -8,6 +13,21 @@
   position: relative;
   top: 270px;
 }
+.image-container {
+  position: relative;
+}
+
+#h3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+ color: rgb(3, 105, 71);
+ top: -130px;
+  padding: 10px;
+  width: 100%; /* הכותרת תתמלא לרוחב של התמונה */
+  text-align: center; /* מרכז את הטקסט אופקית */
+}
+
 #btn{
     width: 200px;
     height: 80px;
@@ -101,28 +121,36 @@
 
 .custom-table tbody td {
   border: 1px solid #ccc;
+  color: black;
   padding: 10px 15px;
   text-align: center;
 }
 
-/* צבע רקע כל השורות בצבע אפור בהשוואה לאפן (even) */
+/* Alternating row background colors */
 .custom-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2; /* Gray background for even rows */
 }
 
-/* צבע רקע בעת הרחקת העכבר מעל השורה */
+.custom-table tbody tr:nth-child(odd) {
+  background-color: white; /* White background for odd rows */
+}
+
+/* Hover effect */
 .custom-table tbody tr:hover {
-  background-color: #ddd;
+  background-color: #007bff; /* Blue background when hovering */
+  color: white; /* White text color when hovering */
 }
   body{
-   
+ 
+   overflow-x: hidden;
   background-size: cover;
 
   
   }
   #img{
-    width: 1000px;
-    height: 250px;
+    width: 100%;
+  
+    height: 500px;
     position: relative;
     top: -170px;
     right: 20px;
@@ -168,11 +196,11 @@ html {
 #divInfo {
   width: 1720px;
   height: 300px;
-  background-color: rgba(96, 114, 136, 0.845);
+  background-color: rgba(3, 24, 48, 0.845);
   position: relative; /* משמש לשמירת האלמנט במקום קבוע */
   left: 50%;
   bottom: 0;
-  top: 1000px;
+  top: 1300px;
   transform: translateX(-50%);
 }
 #loginTitle{

@@ -14,7 +14,7 @@ import Menu from './components/Menu';
 import { toContainElement } from '@testing-library/jest-dom/dist/matchers';
 import Info from './components/Info';
 import img from './components/t.jpg'
-
+import img2 from './components/l.jpg'
 
 function App() {
 
@@ -157,6 +157,7 @@ const toggleAddFlight = () => {
   setShowAllFlight(false); // מסתיר את AllFlight
   setShowSortFlight(false)
   setShowDelFlight(false)
+  setShowLogin(false)
 };
 
 const toggleAllFlight = () => {
@@ -181,6 +182,7 @@ const toggleLogin = ()=>{
   setShowSortFlight(false);
   setShowLogin(true)
   setShowAddFlight(false)
+  setShowDelFlight(false)
 }
 
 const toggleDelFlight = ()=>{
@@ -197,20 +199,39 @@ const toggleExit = ()=>{
   setShowAllFlight(false);
   setShowLogin(false)
 }
+const toggleAfterFlight = ()=>{
+  setShowDelFlight(false)
+  setShowSortFlight(false)
+  setShowAddFlight(false); 
+  setShowAllFlight(false);
+  setShowLogin(false)
+} 
 
   return (
     <div className="App">
    <Info           />
  
-<HashRouter> 
+<HashRouter>
+<div class="container">
+
+</div> 
 <h1>Flight Control</h1>
-<img id='img' src={img}alt="" />
+<img style={{width:'300px',height:'100px',position:'relative',right:'600px',top:'-300px',font:'100px'}} src={img2}/>
+<div class="image-container">
+  <img id="img" src={img} alt="" />
+  <h3 id="h3"><h3 style={{fontSize:'50px'}}>Welcome to Flight Control</h3>
+  <br/>
+   The Leading Destination for Aviation Management
+  <br/>
+  and Oversight</h3>
+  <button style={{position:'relative',top:'-400px',width:'100px',height:'40px',backgroundColor: 'rgb(3, 105, 71)',color:'white'}} onClick={toggleLogin} id='btnLogin'  >התחברות</button>
+</div>
 {showAddFlight && <AddFlight planOpt={planOpt} addPlan={addPlan} />}
 {showAllFlight  &&  
  <AllFlight  val = {vall} toggleAllFlight = {toggleAllFlight}  showAllFlight = {showAllFlight} setShowAllFlight = {setShowAllFlight} newFlight = {newFlight} lockFlight = {lockFlight} addPlan ={addPlan} planOpt = {planOpt}  />}
 
 { showSortFlight && <SortFlight  select = {select}   addPlan = {addPlan}  planOpt = {planOpt}    tempFlight = {tempFlight} sort={sort}  />}
-{showLogin && <Signin toggleLogin = {toggleLogin}  setFlag = {setFlag}/>}
+{showLogin && <Signin toggleLogin = {toggleLogin}  setFlag = {setFlag} toggleAfterFlight = {toggleAfterFlight}/>}
 {showDelFlight && <DelFlight  del = {del}  planOpt = {planOpt}     />}
 
 <Routes>

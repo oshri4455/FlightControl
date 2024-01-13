@@ -15,7 +15,7 @@ export default function
 
 <button onClick={props.toggleSortlight} id='btn' className="btn btn-dark" >מיון טיסות</button>
 
-<button onClick={props.toggleLogin} id='btn'  className="btn btn-dark">התחברות</button>
+
 
 
 

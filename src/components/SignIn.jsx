@@ -27,7 +27,8 @@ else{
     <h2 id='loginTitle'>Login Admin</h2>
 <input id='inptLogin' onChange={(e)=>{setIdFlight(e.target.value)}} type="text" placeholder='מספר מזהה' />
 <br />
-<button id='btnLogin'  className="btn btn-dark" onClick={signIn}  >כניסה</button>
+<button id='btnLogin'  className="btn btn-dark"onClick={() =>{signIn(); props.toggleAfterFlight();
+}} >כניסה</button>
 
     </div>
   )
