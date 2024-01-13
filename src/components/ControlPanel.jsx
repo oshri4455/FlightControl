@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Info from './Info'
 import AddFlight from './AddFlight'
+import './style.css'
 
 export default function ControlPanel(props) {
   const handleShowAllFlights = () => {

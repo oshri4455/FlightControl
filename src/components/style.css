@@ -33,7 +33,7 @@ body {
     height: 80px;
     margin: 5px;
     position: relative;
-    left: 650px;
+    left: 750px;
 }
 #divdel{
   position: relative;
@@ -266,10 +266,10 @@ width: 100%;
 
     
  
-  #btn{
+  btn{
     width: 100px;
     height: 70px;
-    margin-right: 200px;
+    left:500px;
     position: relative;
 
     
