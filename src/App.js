@@ -15,6 +15,7 @@ import { toContainElement } from '@testing-library/jest-dom/dist/matchers';
 import Info from './components/Info';
 import img from './components/t.jpg'
 import img2 from './components/l.jpg'
+import LoginButton from './components/LoginButton';
 
 function App() {
 
@@ -30,7 +31,7 @@ const[flag,setFlag] = useState(false)
 const [showSortFlight,setShowSortFlight] = useState(false)
 const [showLogin ,setShowLogin] = useState(false)
 const [showDelFlight,setShowDelFlight] = useState(false)
-
+const [showLoginButton,setShowLoginButoon]=useState(true)
 
   
   
@@ -198,13 +199,16 @@ const toggleExit = ()=>{
   setShowAddFlight(false); 
   setShowAllFlight(false);
   setShowLogin(false)
+  setShowLoginButoon(true)
 }
 const toggleAfterFlight = ()=>{
   setShowDelFlight(false)
   setShowSortFlight(false)
   setShowAddFlight(false); 
-  setShowAllFlight(false);
+  setShowAllFlight(true);
   setShowLogin(false)
+  setShowLoginButoon(false)
+
 } 
 
   return (
@@ -216,7 +220,7 @@ const toggleAfterFlight = ()=>{
 
 </div> 
 <h1>Flight Control</h1>
-<img style={{width:'300px',height:'100px',position:'relative',right:'600px',top:'-300px',font:'100px'}} src={img2}/>
+<img style={{width:'280px',height:'100px',position:'relative',right:'720px',top:'-350px',font:'100px'}} src={img2}/>
 <div class="image-container">
   <img id="img" src={img} alt="" />
   <h3 id="h3"><h3 style={{fontSize:'50px'}}>Welcome to Flight Control</h3>
@@ -224,7 +228,7 @@ const toggleAfterFlight = ()=>{
    The Leading Destination for Aviation Management
   <br/>
   and Oversight</h3>
-  <button style={{position:'relative',top:'-400px',width:'100px',height:'40px',backgroundColor: 'rgb(3, 105, 71)',color:'white'}} onClick={toggleLogin} id='btnLogin'  >התחברות</button>
+ { showLoginButton &&  <LoginButton   toggleLogin = {toggleLogin}        />}
 </div>
 {showAddFlight && <AddFlight planOpt={planOpt} addPlan={addPlan} />}
 {showAllFlight  &&  
