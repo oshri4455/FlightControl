@@ -14,6 +14,8 @@ export default function
    
 
 <button onClick={props.toggleSortlight} id='btn' className="btn btn-dark" >מיון טיסות</button>
+<button onClick={props.toogleAbut} id='btn' className="btn btn-dark">אודות</button>
+<button onClick={props.toogleContact} id='btn' className="btn btn-dark">צור קשר</button>
 
 
 

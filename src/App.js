@@ -16,6 +16,8 @@ import Info from './components/Info';
 import img from './components/t.jpg'
 import img2 from './components/l.jpg'
 import LoginButton from './components/LoginButton';
+import Contact from './components/Contact';
+import Abut from './components/Abut';
 
 function App() {
 
@@ -32,8 +34,8 @@ const [showSortFlight,setShowSortFlight] = useState(false)
 const [showLogin ,setShowLogin] = useState(false)
 const [showDelFlight,setShowDelFlight] = useState(false)
 const [showLoginButton,setShowLoginButoon]=useState(true)
-
-  
+const[showContact,setShowContact]=useState(false)
+  const [showAbut,setShowAbut] = useState(false)
   
 
   useEffect(() => {
@@ -176,6 +178,8 @@ const toggleSortlight = ()=>{
   setShowAllFlight(false);
   setShowLogin(false)
   setShowDelFlight(false)
+  setShowAbut(false)
+  setShowContact(false)
 }
 
 const toggleLogin = ()=>{
@@ -184,6 +188,8 @@ const toggleLogin = ()=>{
   setShowLogin(true)
   setShowAddFlight(false)
   setShowDelFlight(false)
+  setShowAbut(false)
+  setShowContact(false)
 }
 
 const toggleDelFlight = ()=>{
@@ -192,6 +198,8 @@ const toggleDelFlight = ()=>{
   setShowAddFlight(false); 
   setShowAllFlight(false);
   setShowLogin(false)
+  setShowAbut(false)
+  setShowContact(false)
 }
 const toggleExit = ()=>{
   setShowDelFlight(false)
@@ -200,6 +208,8 @@ const toggleExit = ()=>{
   setShowAllFlight(false);
   setShowLogin(false)
   setShowLoginButoon(true)
+  setShowAbut(false)
+  setShowContact(false)
 }
 const toggleAfterFlight = ()=>{
   setShowDelFlight(false)
@@ -208,9 +218,32 @@ const toggleAfterFlight = ()=>{
   setShowAllFlight(true);
   setShowLogin(false)
   setShowLoginButoon(false)
+  setShowAbut(false)
+  setShowContact(false)
 
 } 
 
+const toogleContact = ()=>{
+  setShowDelFlight(false)
+  setShowSortFlight(false)
+  setShowAddFlight(false); 
+  setShowAllFlight(false);
+  setShowLogin(false)
+  setShowLoginButoon(true)
+  setShowAbut(false)
+  setShowContact(true)
+}
+
+const toogleAbut = ()=>{
+  setShowDelFlight(false)
+  setShowSortFlight(false)
+  setShowAddFlight(false); 
+  setShowAllFlight(false);
+  setShowLogin(false)
+  setShowLoginButoon(true)
+  setShowContact(false)
+  setShowAbut(true)
+}
   return (
     <div className="App">
    <Info           />
@@ -237,10 +270,11 @@ const toggleAfterFlight = ()=>{
 { showSortFlight && <SortFlight  select = {select}   addPlan = {addPlan}  planOpt = {planOpt}    tempFlight = {tempFlight} sort={sort}  />}
 {showLogin && <Signin toggleLogin = {toggleLogin}  setFlag = {setFlag} toggleAfterFlight = {toggleAfterFlight}/>}
 {showDelFlight && <DelFlight  del = {del}  planOpt = {planOpt}     />}
-
+{showContact && <Contact           />}
+{showAbut && <Abut         />}
 <Routes>
 
-<Route  path='/' element = {<Menu toggleLogin = {toggleLogin}  toggleAllFlight = {toggleAllFlight} toggleSortlight = {toggleSortlight}    />}          />
+<Route  path='/' element = {<Menu  toggleLogin = {toggleLogin} toogleAbut = {toogleAbut} toogleContact = {toogleContact}  toggleAllFlight = {toggleAllFlight} toggleSortlight = {toggleSortlight}    />}          />
 
 
 

@@ -6,7 +6,7 @@ export default function Info() {
     <div id='divInfo'> 
 
 <div id='divinfo1'>
-<h3>אודותינו</h3>    
+<h3 style={{color:'white'}}>אודותינו</h3>    
 <br />
 <a href=""><h5>אודות</h5></a>
  
@@ -20,7 +20,7 @@ export default function Info() {
 
 <div  id='divinfo2'>
 
-<h3>צור קשר</h3>
+<h3 style={{color:'white'}}>צור קשר</h3>
 
      
 <br />
