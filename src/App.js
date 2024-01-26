@@ -161,6 +161,7 @@ const toggleAddFlight = () => {
   setShowSortFlight(false)
   setShowDelFlight(false)
   setShowLogin(false)
+  setShowAbut(false)
 };
 
 const toggleAllFlight = () => {
@@ -169,6 +170,7 @@ const toggleAllFlight = () => {
   setShowSortFlight(false)
   setShowLogin(false)
   setShowDelFlight(false)
+  setShowAbut(false)
 };
 
 
