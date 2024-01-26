@@ -162,6 +162,7 @@ const toggleAddFlight = () => {
   setShowDelFlight(false)
   setShowLogin(false)
   setShowAbut(false)
+  setShowContact(false)
 };
 
 const toggleAllFlight = () => {
@@ -171,6 +172,7 @@ const toggleAllFlight = () => {
   setShowLogin(false)
   setShowDelFlight(false)
   setShowAbut(false)
+  setShowContact(false)
 };
 
 
